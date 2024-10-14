@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_home_data_design"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimen_5"
+    android:weightSum="2"
+    android:layout_margin="@dimen/dimen_10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="0.6"
+        >
+        <TextView
+            android:id="@+id/text_menu_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_medium"/>
+
+        <TextView
+            android:id="@+id/text_menu_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/text_menu_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_addcartbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1.3"
+        android:background="@drawable/bg_home_data_design"
+        android:backgroundTint="#e31919"
+
+        android:gravity="right"
+
+        android:layout_gravity="center|right"
+        android:orientation="horizontal"
+        >
+        <TextView
+
+            android:id="@+id/text_addcart"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e31919"
+            android:text="Add to Cart"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_bold"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_quantity_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_weight="0.2"
+
+        >
+        <ImageView
+            android:id="@+id/img_minus_button"
+            android:layout_width="@dimen/dimen_30"
+            android:layout_height="@dimen/dimen_30"
+            android:src="@drawable/minus_circled_icon"/>
+        <TextView
+            android:id="@+id/text_count_quantity"
+            android:layout_width="@dimen/dimen_30"
+            android:layout_height="@dimen/dimen_30"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/img_plus_button"
+            android:layout_width="@dimen/dimen_30"
+            android:layout_height="@dimen/dimen_30"
+            android:src="@drawable/plus_circled_icon"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

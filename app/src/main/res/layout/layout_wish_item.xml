@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/dimen_5"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/bg_home_data_design">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:weightSum="2"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/text_vendor_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vendor Name"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_bold"/>
+                <TextView
+                    android:id="@+id/text_vendor_vandorcatagories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vendor Name"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_bold"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_30"
+                android:layout_weight="1"
+                android:layout_gravity="center|right"
+                android:src="@drawable/inactive_favorite_icon"/>
+
+        </LinearLayout>
+
+
+
+
+
+</LinearLayout>
