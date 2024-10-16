@@ -6,6 +6,8 @@
     <color name="green">#00CF73</color>
     <color name="green2">#00B75F</color>
     <color name="grey">#4D556A</color>
+    <color name="light_gray">#F3F3F3</color>
+    <color name="gray">#A0A0A0</color>
 
     <color name="colorPrimary">#00CF73</color>
     <color name="colorPrimaryDark">#3700B3</color>

@@ -1,6 +1,7 @@
 package com.mymestavendorapplication.ui.productdetails.productdetailsviewmodel
 
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,13 +24,13 @@ class ProductdetailsViewModels @Inject constructor(
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> get() = _isFavorite
 
+/*
    fun toggleFavorite(vendor: Vendor?) {
         vendor?.let {
             val updatedVendor = it.copy(isFavorite = !it.isFavorite) // Toggle the favorite status
             viewModelScope.launch {
                 // Update the database with the new favorite status
                 withContext(Dispatchers.IO) {
-
                     vendorDao.insertVendor(
                         VendorEntity(
                             id = updatedVendor.id,
@@ -51,6 +52,38 @@ class ProductdetailsViewModels @Inject constructor(
             _isFavorite.postValue(false) // Handle case when vendor is null
         }
     }
+*/
+
+    fun toggleFavorite(vendor: Vendor?) {
+        vendor?.let {
+
+            val updatedVendor = it.copy(isFavorite = !it.isFavorite) // Toggle the favorite status
+            Log.d("ProductDetailsViewModel", "Toggling favorite for vendor ID: ${vendor.id}, new favorite status: ${updatedVendor.isFavorite}")
+
+            viewModelScope.launch {
+                withContext(Dispatchers.IO) {
+                    // Update the vendor entry in the database
+                    vendorDao.updateVendor(
+                        VendorEntity(
+                            id = updatedVendor.id,
+                            name = updatedVendor.name!!,
+                            description = updatedVendor.description!!,
+                            rating = updatedVendor.rating!!,
+                            category = updatedVendor.category!!,
+                            deliveryTime = updatedVendor.delivery_time!!,
+                            isFavorite = updatedVendor.isFavorite
+                        )
+                    )
+                }
+                // Post the new favorite status to LiveData
+                _isFavorite.postValue(updatedVendor.isFavorite)
+                checkFavoriteStatus(updatedVendor.id)
+
+            }
+        } ?: run {
+            _isFavorite.postValue(false) // Handle case when vendor is null
+        }
+    }
 
 
     fun checkFavoriteStatus(vendorId: Int) {
@@ -61,7 +94,6 @@ class ProductdetailsViewModels @Inject constructor(
             _isFavorite.postValue(vendor?.isFavorite ?: false)  // This runs on the main thread
         }
     }
-
 
 
     // Function to toggle the favorite status of a vendor

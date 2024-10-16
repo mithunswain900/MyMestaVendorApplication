@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mymestavendorapplication.R
 import com.mymestavendorapplication.databinding.FragmentHomeBinding
@@ -25,6 +24,8 @@ import com.mymestavendorapplication.ui.productdetails.ProductDetailsActivity
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.google.android.material.search.SearchView
+
 
 
 class HomeFragment : Fragment() {
@@ -107,6 +108,7 @@ class HomeFragment : Fragment() {
 
 
 
+
         homebinding.edtSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let { dashBoardViewModel.filterVendors(it) }
@@ -119,7 +121,10 @@ class HomeFragment : Fragment() {
             }
         })
 
+
+
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

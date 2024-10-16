@@ -37,10 +37,14 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
 
+
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
         navController = navHostFragment.navController
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+       // NavigationUI.setupWithNavController(bottomNavigationView, navController)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+
 
 
         val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "app_database")
@@ -51,15 +55,33 @@ class MainActivity : AppCompatActivity() {
         mainBinding.imgDrawerNavigation.setOnClickListener {
             mainBinding.drawerlayout.openDrawer(GravityCompat.START)
         }
-
         mainBinding.rrCartItem.setOnClickListener {
-           // navController.navigate(2)
-            val navOptions = NavOptions.Builder()
-                .setPopUpTo(R.id.homeFragment, false) // Adjust to your fragment
-                .build()
-
-            navController.navigate(R.id.cartFragment, null, navOptions)
+            // navController.navigate(2)
+            navController.navigate(R.id.cartFragment)
         }
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.homeFragment -> {
+                    navController.navigate(R.id.homeFragment)
+                    true
+                }
+                R.id.cartFragment -> {
+                    navController.navigate(R.id.cartFragment)
+                    true
+                }
+                R.id.whishListFragment -> {
+                    navController.navigate(R.id.whishListFragment)
+                    true
+                }
+                R.id.profileFragment -> {
+                    navController.navigate(R.id.profileFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+
 
     }
 

@@ -13,6 +13,7 @@ import com.mymestavendorapplication.database.entity.VendorEntity
 interface VendorDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+
     fun insertVendor(vendor: VendorEntity)
 
     @Update
@@ -21,8 +22,8 @@ interface VendorDao {
     @Delete
     fun deleteVendor(vendor: VendorEntity)
 
-    @Query("SELECT * FROM vendors WHERE id = :id LIMIT 1")
-   // @Query("SELECT * FROM vendors WHERE id = :id")
+   // @Query("SELECT * FROM vendors WHERE id = :id LIMIT 1")
+    @Query("SELECT * FROM vendors WHERE id = :id")
     fun getVendorById(id: Int): VendorEntity
 
     @Query("SELECT * FROM vendors")

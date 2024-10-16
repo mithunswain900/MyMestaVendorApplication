@@ -3,24 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#F3F2F2F2"
     tools:context=".ui.dashboad.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/edt_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_edit_text_background"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:textSize="15sp"
-        android:textColor="@color/black"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_home_data_design"
+        android:layout_margin="@dimen/dimen_10"
+        android:hint="search items"
+        app:iconifiedByDefault="false"
+     app:queryHint="Search items"
+     app:searchIcon="@drawable/ic_search"
+     app:queryBackground="@drawable/bg_search_query"
 
         />
+
 
 
     <androidx.recyclerview.widget.RecyclerView

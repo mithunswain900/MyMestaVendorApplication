@@ -59,6 +59,7 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         vendor?.let {
             displayVendorDetails(it)
+            productdetailsViewModels.checkFavoriteStatus(it.id)
             checkVendorFavorityes(it)
         }
 
@@ -211,7 +212,6 @@ class ProductDetailsActivity : AppCompatActivity() {
             }
         }
     }
-
 
 }
 
