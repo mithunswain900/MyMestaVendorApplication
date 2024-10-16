@@ -1,8 +1,11 @@
 package com.mymestavendorapplication.ui.dashboad
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.room.Room
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         private lateinit var navController: NavController
 
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         injectDependencies()
         super.onCreate(savedInstanceState)
@@ -37,10 +41,25 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+
+
         val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "app_database")
             .build()
         menuItemsDao = db.menuItemsDao()
         getCountCartData()
+
+        mainBinding.imgDrawerNavigation.setOnClickListener {
+            mainBinding.drawerlayout.openDrawer(GravityCompat.START)
+        }
+
+        mainBinding.rrCartItem.setOnClickListener {
+           // navController.navigate(2)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.homeFragment, false) // Adjust to your fragment
+                .build()
+
+            navController.navigate(R.id.cartFragment, null, navOptions)
+        }
 
     }
 
@@ -53,8 +72,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-//        val fragmentId = intent.getIntExtra("fragment_id", R.id.cartFragment)
-//        navController.navigate(fragmentId)
 
     }
 
